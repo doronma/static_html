@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: simple-nginx
+  labels:
+    creation_method: manual
+    env: prod
+    creator: doronmarcus
+    pod-ref: simple-nginx
+  annotations:
+    description: "This is a very simple nginx image with hello world page"
+spec:
+  containers:
+    - image: doroncomputer/simple_nginx
+      name: simple-nginx
+      ports:
+      - containerPort: 80
+        protocol: TCP
