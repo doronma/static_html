@@ -1,18 +1,15 @@
-apiVersion: apps/v1
-kind: ReplicaSet
+apiVersion: v1
+kind: ReplicationController
 metadata:
-  name: simple-nginx-rs
+  name: simple-nginx-rc
 spec:
   replicas: 3
-  selector:
-    matchLabels:
-      app: simple-nginx
   template:
     metadata:
       labels:
         creation_method: manual
         env: prod
-        app: simple-nginx
+        pod-ref: simple-nginx
       annotations:
         description: "This is a very simple nginx image with hello world page"
     spec:
@@ -20,8 +17,7 @@ spec:
         - image: doroncomputer/simple_nginx
           name: simple-nginx
           ports:
-          - name: http
-            containerPort: 80
+          - containerPort: 80
             protocol: TCP
           livenessProbe:
             httpGet:

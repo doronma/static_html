@@ -6,7 +6,7 @@ metadata:
     creation_method: manual
     env: prod
     creator: doronmarcus
-    pod-ref: simple-nginx
+    app: simple-nginx
   annotations:
     description: "This is a very simple nginx image with hello world page"
 spec:
@@ -14,7 +14,8 @@ spec:
     - image: doroncomputer/simple_nginx
       name: simple-nginx
       ports:
-      - containerPort: 80
+      - name: http
+        containerPort: 80
         protocol: TCP
       livenessProbe:
         httpGet:
