@@ -16,3 +16,8 @@ spec:
       ports:
       - containerPort: 80
         protocol: TCP
+      livenessProbe:
+        httpGet:
+          path: /keepalive.json
+          port: 80
+        initialDelaySeconds: 15

@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: simple-nginx-rc
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        creation_method: manual
+        env: prod
+        pod-ref: simple-nginx
+      annotations:
+        description: "This is a very simple nginx image with hello world page"
+    spec:
+      containers:
+        - image: doroncomputer/simple_nginx
+          name: simple-nginx
+          ports:
+          - containerPort: 80
+            protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /keepalive.json
+              port: 80
+            initialDelaySeconds: 15
+ 
