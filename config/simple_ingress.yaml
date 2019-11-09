@@ -11,3 +11,10 @@ spec:
             backend:
               serviceName: simple-nginx-svc
               servicePort: 81
+    - host: simple-flask.example.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: simple-flask-svc
+              servicePort: 5001

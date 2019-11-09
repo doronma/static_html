@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: simple-flask-rs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simple-flask
+  template:
+    metadata:
+      labels:
+        creation_method: manual
+        env: prod
+        app: simple-flask
+      annotations:
+        description: "This is a very simple python flask image"
+    spec:
+      containers:
+        - image: doroncomputer/simple-flask-rest
+          name: simple-flask
+          ports:
+          - name: http
+            containerPort: 5000
+            protocol: TCP
+          
+ 
