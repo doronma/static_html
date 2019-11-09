@@ -4,8 +4,8 @@ metadata:
   name: simple-nginx-svc
 spec:
   ports:
-  - name: http
-    port: 81
-    targetPort: http
+    - name: http
+      port: 81
+      targetPort: http
   selector:
     app: simple-nginx
