@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-nginx-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: simple-nginx
+  template:
+    metadata:
+      labels:
+        creation_method: manual
+        env: prod
+        app: simple-nginx
+      annotations:
+        description: "This is a very simple nginx image with hello world page"
+    spec:
+      containers:
+        - image: doroncomputer/simple_nginx
+          name: simple-nginx
+          ports:
+          - name: http
+            containerPort: 80
+            protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /keepalive.json
+              port: 80
+            initialDelaySeconds: 15
+ 

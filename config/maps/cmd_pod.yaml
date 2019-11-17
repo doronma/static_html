@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: some-cmd-pod
+spec:
+  containers:
+    - name: some-container
+      image: some/image
+      command: ["/bin/command"]
+      args: ["arg1", "arg2", "arg3"]

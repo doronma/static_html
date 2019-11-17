@@ -1,7 +1,7 @@
 apiVersion: apps/v1
-kind: ReplicaSet
+kind: Deployment
 metadata:
-  name: simple-flask-rs
+  name: simple-flask-deployment
 spec:
   replicas: 1
   selector:
@@ -9,6 +9,7 @@ spec:
       app: simple-flask
   template:
     metadata:
+      name: simple-flask 
       labels:
         creation_method: manual
         env: prod
